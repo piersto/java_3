@@ -5,23 +5,18 @@ public class MyFirstProgram {
     public static void main(String[] args) {
         hello("world");
         hello("Vasia");
-        double len = 5;
         double width = 6;
 
-        System.out.println("Sqaare of the rectangular with side " + len + " equals to " + area(len) );
-        System.out.println("Square of the rectangular with sides "
-                + len + " and " + width + " equals to " + square(len, width));
+        Square s = new  Square(5);
+        System.out.println("Square of the rectangular with side " + s.l + " equals to " + s.area() );
 
+        Rectangle r = new Rectangle(7, 8);
+        System.out.println("Square of the rectangle with sides " + r.a +", " + r.b + " equals to " + r.area());
     }
     public static void hello(String s) {
         System.out.println("Hello, " + s + "!");
     }
 
-    public static double area(double l) {
-        return l * l;
-    }
 
-    public static double square (double l, double w) {
-        return l * w;
-    }
+
 }
