@@ -15,6 +15,7 @@ public class TestBase {
     public WebDriver wd;
 
     @BeforeMethod(alwaysRun = true)
+
     public void setUp() throws Exception {
         wd = new ChromeDriver();
         wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -102,5 +103,19 @@ public class TestBase {
 
     protected void selectContact() {
       wd.findElement(By.name("selected[]")).click();
+    }
+
+    protected void submitContactCreation() {
+        wd.findElement(By.name("submit")).click();
+    }
+
+    protected void fillContactForm(ContactData contactData) {
+        wd.findElement(By.name("lastname")).click();
+        wd.findElement(By.name("lastname")).clear();
+        wd.findElement(By.name("lastname")).sendKeys(contactData.getLastName());
+    }
+
+    protected void initContactCreation() {
+        wd.findElement(By.cssSelector("li.all a")).click();
     }
 }
