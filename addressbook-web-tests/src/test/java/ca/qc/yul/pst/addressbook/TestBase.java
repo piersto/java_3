@@ -94,4 +94,13 @@ public class TestBase {
     protected void selectGroup() {
       wd.findElement(By.name("selected[]")).click();
     }
+
+    protected void deleteContacts() {
+      wd.findElement(By.xpath("//input[@value='Delete']")).click();
+      wd.switchTo().alert().accept();
+    }
+
+    protected void selectContact() {
+      wd.findElement(By.name("selected[]")).click();
+    }
 }
