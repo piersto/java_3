@@ -1,4 +1,4 @@
-package ca.qc.yul.pst.addressbook;
+package ca.qc.yul.pst.addressbook.model;
 
 public class GroupData {
     private final String name;

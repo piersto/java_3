@@ -1,9 +1,6 @@
-package ca.qc.yul.pst.addressbook;
+package ca.qc.yul.pst.addressbook.tests;
 
-import java.util.concurrent.TimeUnit;
 import org.testng.annotations.*;
-import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class GroupDeletionTests extends TestBase {
 

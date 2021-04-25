@@ -1,7 +1,6 @@
-package ca.qc.yul.pst.addressbook;
+package ca.qc.yul.pst.addressbook.tests;
 
 import org.testng.annotations.*;
-import org.openqa.selenium.*;
 
 public class ContactDeletionTests extends TestBase{
 

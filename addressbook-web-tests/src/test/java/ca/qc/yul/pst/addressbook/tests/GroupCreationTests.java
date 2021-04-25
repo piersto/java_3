@@ -1,5 +1,6 @@
-package ca.qc.yul.pst.addressbook;
+package ca.qc.yul.pst.addressbook.tests;
 
+import ca.qc.yul.pst.addressbook.model.GroupData;
 import org.testng.annotations.Test;
 
 public class GroupCreationTests extends TestBase {
