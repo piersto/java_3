@@ -6,8 +6,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class GroupHelper {
+    private WebDriver wd;
 
-    public WebDriver wd;
+
+    public GroupHelper(WebDriver wd) {
+        this.wd = wd;
+    }
 
     public void returnToGroupPage() {
         wd.findElement(By.linkText("group page")).click();
