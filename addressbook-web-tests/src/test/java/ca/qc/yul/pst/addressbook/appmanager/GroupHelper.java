@@ -2,11 +2,12 @@ package ca.qc.yul.pst.addressbook.appmanager;
 
 import ca.qc.yul.pst.addressbook.model.GroupData;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class GroupHelper {
 
-    public ChromeDriver wd;
+    public WebDriver wd;
 
     public void returnToGroupPage() {
         wd.findElement(By.linkText("group page")).click();
