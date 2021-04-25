@@ -12,29 +12,24 @@ import java.util.concurrent.TimeUnit;
 public class ApplicationManager {
     WebDriver wd;
 
+    public ContactHelper contactHelper;
+    private SessionHelper sessionHelper;
+    public NavigationHelper navigationHelper;
     public GroupHelper groupHelper;
+
 
     public void init() {
         wd = new ChromeDriver();
         wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         wd.get("http://localhost/addressbook/");
         groupHelper = new GroupHelper(wd);
-        login("admin", "secret");
+        contactHelper = new ContactHelper(wd);
+        navigationHelper = new NavigationHelper(wd);
+        sessionHelper = new SessionHelper(wd);
+        sessionHelper.login("admin", "secret");
     }
 
-    public void login(String username, String password) {
-        wd.findElement(By.name("user")).clear();
-        wd.findElement(By.name("user")).sendKeys(username);
-        wd.findElement(By.name("pass")).click();
-        wd.findElement(By.name("pass")).clear();
-        wd.findElement(By.name("pass")).sendKeys(password);
-        wd.findElement(By.id("LoginForm")).click();
-        wd.findElement(By.xpath("//input[@value='Login']")).click();
-    }
 
-    public void goToGroupPage() {
-        wd.findElement(By.linkText("groups")).click();
-    }
 
     public void stop() {
         wd.quit();
@@ -50,42 +45,22 @@ public class ApplicationManager {
     }
 
     public boolean isAlertPresent() {
-        try {
-            wd.switchTo().alert();
+        try {wd.switchTo().alert();
             return true;
         } catch (NoAlertPresentException e) {
             return false;
         }
     }
 
-    public void returnToHomePage() {
-      wd.findElement(By.linkText("home")).click();
-    }
-
-    public void deleteContacts() {
-      wd.findElement(By.xpath("//input[@value='Delete']")).click();
-      wd.switchTo().alert().accept();
-    }
-
-    public void selectContact() {
-      wd.findElement(By.name("selected[]")).click();
-    }
-
-    public void submitContactCreation() {
-        wd.findElement(By.name("submit")).click();
-    }
-
-    public void fillContactForm(ContactData contactData) {
-        wd.findElement(By.name("lastname")).click();
-        wd.findElement(By.name("lastname")).clear();
-        wd.findElement(By.name("lastname")).sendKeys(contactData.getLastName());
-    }
-
-    public void initContactCreation() {
-        wd.findElement(By.cssSelector("li.all a")).click();
+    public ContactHelper getContactHelper() {
+        return contactHelper;
     }
 
     public GroupHelper getGroupHelper() {
         return groupHelper;
+    }
+
+    public NavigationHelper getNavigationHelper() {
+        return navigationHelper;
     }
 }
