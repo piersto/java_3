@@ -30,4 +30,12 @@ public class ContactHelper extends HelperBase {
     public void initContactCreation() {
         click(By.cssSelector("li.all a"));
     }
+
+    public void initContactModification() {
+        click(By.cssSelector("img[title='Edit']"));
+    }
+
+    public void submitContactModification() {
+        click(By.name("update"));
+    }
 }
