@@ -4,34 +4,30 @@ import ca.qc.yul.pst.addressbook.model.ContactData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class ContactHelper {
-    private WebDriver wd;
+public class ContactHelper extends HelperBase {
 
     public ContactHelper(WebDriver wd) {
-        this.wd = wd;
+        super(wd);
     }
 
-
     public void deleteContacts() {
-        wd.findElement(By.xpath("//input[@value='Delete']")).click();
+        click(By.xpath("//input[@value='Delete']"));
         wd.switchTo().alert().accept();
     }
 
     public void selectContact() {
-        wd.findElement(By.name("selected[]")).click();
+        click(By.name("selected[]"));
     }
 
     public void submitContactCreation() {
-        wd.findElement(By.name("submit")).click();
+        click(By.name("submit"));
     }
 
     public void fillContactForm(ContactData contactData) {
-        wd.findElement(By.name("lastname")).click();
-        wd.findElement(By.name("lastname")).clear();
-        wd.findElement(By.name("lastname")).sendKeys(contactData.getLastName());
+        type(By.name("lastname"), contactData.getLastName());
     }
 
     public void initContactCreation() {
-        wd.findElement(By.cssSelector("li.all a")).click();
+        click(By.cssSelector("li.all a"));
     }
 }
