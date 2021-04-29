@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeMethod;
 public class TestBase {
 
     // Here we change browser if needed!!!
-    protected final ApplicationManager app = new ApplicationManager(BrowserType.EDGE);
+    protected final ApplicationManager app = new ApplicationManager(BrowserType.CHROME);
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() throws Exception {
