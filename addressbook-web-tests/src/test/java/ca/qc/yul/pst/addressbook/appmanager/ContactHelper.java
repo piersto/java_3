@@ -2,7 +2,9 @@ package ca.qc.yul.pst.addressbook.appmanager;
 
 import ca.qc.yul.pst.addressbook.model.ContactData;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class ContactHelper extends HelperBase {
 
@@ -25,6 +27,10 @@ public class ContactHelper extends HelperBase {
 
     public void fillContactForm(ContactData contactData) {
         type(By.name("lastname"), contactData.getLastName());
+
+        if (elementPresent(By.name("new_group"))){
+            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+        }
     }
 
     public void initContactCreation() {
