@@ -17,8 +17,8 @@ public class ContactHelper extends HelperBase {
         wd.switchTo().alert().accept();
     }
 
-    public void selectContact() {
-        click(By.name("selected[]"));
+    public void selectContact(int index) {
+        wd.findElements(By.name("selected[]")).get(index).click();
     }
 
     public void submitContactCreation() {
@@ -39,8 +39,8 @@ public class ContactHelper extends HelperBase {
         click(By.cssSelector("li.all a"));
     }
 
-    public void initContactModification() {
-        click(By.cssSelector("img[title='Edit']"));
+    public void initContactModification(int index) {
+        wd.findElements(By.cssSelector("img[title='Edit']")).get(index).click();
     }
 
     public void submitContactModification() {

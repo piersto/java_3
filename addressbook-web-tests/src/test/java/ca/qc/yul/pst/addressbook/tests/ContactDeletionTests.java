@@ -10,7 +10,7 @@ public class ContactDeletionTests extends TestBase{
   public void testContactDeletion() throws Exception {
     app.getNavigationHelper().returnToHomePage();
     int before = app.getContactHelper().getContactCount();
-    app.getContactHelper().selectContact();
+    app.getContactHelper().selectContact(before - 1);
     app.getContactHelper().deleteContacts();
     app.getNavigationHelper().returnToHomePage();
     int after = app.getContactHelper().getContactCount();
