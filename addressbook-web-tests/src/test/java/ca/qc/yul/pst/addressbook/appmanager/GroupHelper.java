@@ -3,6 +3,10 @@ package ca.qc.yul.pst.addressbook.appmanager;
 import ca.qc.yul.pst.addressbook.model.GroupData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GroupHelper extends HelperBase{
 
@@ -57,5 +61,21 @@ public class GroupHelper extends HelperBase{
 
     public int getGroupCount() {
         return wd.findElements(By.name("selected[]")).size();
+    }
+
+    public List<GroupData> getGroupList() {
+        List<GroupData> groups = new ArrayList<GroupData>();
+        // Получаем список объектов типа WebElement
+        List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
+        // Проходим в цикле по этим элементам (element проходит по смиску elements)
+        for (WebElement element : elements) {
+            // Получает текст из каждого элемента
+            String name = element.getText();
+            // Создаём объект типа GroupData
+            GroupData group = new GroupData(name, null, null);
+            // Добавляем созданный объект в список
+            groups.add(group);
+        }
+        return groups;
     }
 }
