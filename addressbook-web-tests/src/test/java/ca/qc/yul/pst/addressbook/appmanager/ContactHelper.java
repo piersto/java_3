@@ -65,4 +65,15 @@ public class ContactHelper extends HelperBase {
         }
         return contacts;
     }
+
+    public boolean isThereAContact() {
+        return elementPresent(By.name("selected[]")) &&
+                elementPresent(By.cssSelector("input[value='Add to']"));
+    }
+
+    public void createContact(ContactData contact) {
+        initContactCreation();
+        fillContactForm(contact, true);
+        submitContactCreation();
+    }
 }
