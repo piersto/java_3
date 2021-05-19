@@ -4,18 +4,20 @@ import ca.qc.yul.pst.addressbook.model.ContactData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 public class ContactCreationTest extends TestBase{
 
     @Test
     public void testContactCreation() throws Exception {
         app.getNavigationHelper().returnToHomePage();
-        int before = app.getContactHelper().getContactCount();
+        List<ContactData> before = app.getContactHelper().getContactList();
         app.getContactHelper().initContactCreation();
         app.getContactHelper().
                 fillContactForm(new ContactData("Stoiko", "[none]" ), true);
         app.getContactHelper().submitContactCreation();
         app.navigationHelper.returnToHomePage();
-        int after = app.getContactHelper().getContactCount();
-        Assert.assertEquals(before + 1, after);
+        List<ContactData> after = app.getContactHelper().getContactList();
+        Assert.assertEquals(before.size() + 1, after.size());
     }
 }

@@ -1,7 +1,10 @@
 package ca.qc.yul.pst.addressbook.tests;
 
+import ca.qc.yul.pst.addressbook.model.ContactData;
 import org.testng.Assert;
 import org.testng.annotations.*;
+
+import java.util.List;
 
 
 public class ContactDeletionTests extends TestBase{
@@ -9,11 +12,11 @@ public class ContactDeletionTests extends TestBase{
   @Test
   public void testContactDeletion() throws Exception {
     app.getNavigationHelper().returnToHomePage();
-    int before = app.getContactHelper().getContactCount();
-    app.getContactHelper().selectContact(before - 1);
+    List<ContactData> before = app.getContactHelper().getContactList();
+    app.getContactHelper().selectContact(before.size() - 1);
     app.getContactHelper().deleteContacts();
     app.getNavigationHelper().returnToHomePage();
-    int after = app.getContactHelper().getContactCount();
-    Assert.assertEquals(before -1, after);
+    List<ContactData> after = app.getContactHelper().getContactList();
+    Assert.assertEquals(before.size() -1, after.size());
   }
 }
