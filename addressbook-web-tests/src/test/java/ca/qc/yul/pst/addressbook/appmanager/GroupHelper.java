@@ -4,6 +4,7 @@ import ca.qc.yul.pst.addressbook.model.GroupData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.mustache.Value;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,9 +71,10 @@ public class GroupHelper extends HelperBase{
         // Проходим в цикле по этим элементам (element проходит по смиску elements)
         for (WebElement element : elements) {
             // Получает текст из каждого элемента
+            String id = element.findElement(By.tagName("input")).getAttribute("value");
             String name = element.getText();
             // Создаём объект типа GroupData
-            GroupData group = new GroupData(name, null, null);
+            GroupData group = new GroupData(id, name, null, null);
             // Добавляем созданный объект в список
             groups.add(group);
         }
