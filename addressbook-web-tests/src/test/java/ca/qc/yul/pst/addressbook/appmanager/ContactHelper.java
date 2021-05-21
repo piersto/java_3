@@ -31,6 +31,7 @@ public class ContactHelper extends HelperBase {
 
     public void fillContactForm(ContactData contactData, boolean creation) {
         type(By.name("lastname"), contactData.getLastName());
+        type(By.name("firstname"), contactData.getFirstName());
 
         if (creation) {
             new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
@@ -59,9 +60,10 @@ public class ContactHelper extends HelperBase {
         List<ContactData> contacts = new ArrayList<ContactData>();
         List<WebElement> elements = wd.findElements(By.cssSelector("#maintable > tbody > tr[name='entry']"));
         for (WebElement element : elements) {
+            String id = element.findElement(By.cssSelector("input")).getAttribute("id");
             String lastName = element.findElement(By.cssSelector("tr > td:nth-child(2)")).getText();
             String firstName = element.findElement(By.cssSelector("tr > td:nth-child(3)")).getText();
-            ContactData contact = new ContactData(lastName, firstName, null);
+            ContactData contact = new ContactData(id, lastName, firstName, null);
             contacts.add(contact);
         }
         return contacts;
